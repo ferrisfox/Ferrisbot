@@ -18,15 +18,9 @@ bot.command(:status, help_available: false) do |event, *args|
     bot.update_status('online', args.join(' '), nil)
 end
 
-bot.command(:restart, help_available: false) do |event, *args|
-    break unless event.user.id == 109792060256616448
 
-    bot.stop
-end
-
-
-bot.command(:ping) do |event|
-    return 'pong'
+bot.command(:ping, discription: '') do |event|
+    event.react '\u1f44b'
 end
 
 bot.command(:roll) do |_event, sides|
