@@ -20,7 +20,7 @@ end
 
 
 bot.command(:ping, discription: '') do |event|
-    event.react "\u274c"
+    event.message.react "\u274c"
 end
 
 bot.command(:roll) do |_event, sides|
