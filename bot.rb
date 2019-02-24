@@ -19,16 +19,16 @@ bot.command(:status, help_available: false) do |event, *args|
 end
 
 
-bot.command(:ping, discription: '') do |event|
+bot.command(:ping, description: 'Check if I\'m online') do |event|
     event.message.react "👋"
 end
 
-bot.command(:roll) do |_event, sides|
+bot.command(:roll, description: 'Roll a dice') do |_event, sides|
     sides = 6 unless sides.to_i >= 1
     return 'Rolled a ' + rand(sides.to_i) + '.'
 end
 
-bot.command(:coin) do |_event|
+bot.command(:coin, description: 'Flip a coin') do |_event|
     return 'Landed on ' + ['heads', 'tails'][rand(2)] + '.'
 end
 
