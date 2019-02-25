@@ -52,7 +52,7 @@ bot.run true
 
 bot.update_status('online', '', nil)
 for user in bot_admins
-    bot.send_temporary_message(bot.users[user].pm, '```I\'m online. beep boop```', 30)
+    bot.send_temporary_message(bot.users[user].pm, 'I\'m online. beep boop.', 10)
 end
 
 bot.join
