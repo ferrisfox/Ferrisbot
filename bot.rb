@@ -33,7 +33,8 @@ end
 
 
 
-bot.message(content: '@Ferrisbot') do |event|
+bot.mention() do |event|
+    break unless event.content.length <= 10
     event << 'Hey @' + event.user.name + ' You can use !help for a list of what I can do'
 end
 
