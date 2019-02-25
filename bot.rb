@@ -8,6 +8,7 @@ puts "This bot's invite URL is: #{bot.invite_url}"
 
 
 @bot_admins = [109792060256616448]
+@bot_admins.freeze
 
 def is_admin (user)
     #user = user.user unless user.respond_to?(:pm)  #tries to fix any cases of bad input. just give propper input insted.
