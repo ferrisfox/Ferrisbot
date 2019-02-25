@@ -14,7 +14,7 @@ Once bot is running on Huroku, the bot token needs to be specified with the conf
 
 >TODO: explain hard-codeing developer accounts (ommited untill system is finalised)
 
-### Localy
+### Localy withou Heroku CLI
 
 replace code on line 4:
 
