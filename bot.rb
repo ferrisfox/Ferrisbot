@@ -32,4 +32,8 @@ bot.command(:coin, description: 'Flip a coin') do |_event|
     return 'Landed on ' + ['heads', 'tails'][rand(2)] + '.'
 end
 
-bot.run
+bot.run true
+
+bot.send_temporary_message(bot.users[109792060256616448].pm, '```I\'m online. beep boop```', 30)
+
+bot.join
