@@ -6,17 +6,30 @@ bot = Discordrb::Commands::CommandBot.new token: 'MjIxMTY1ODMwOTg4MjM0NzUy.Dz_wV
 puts "This bot's invite URL is: #{bot.invite_url}"
 
 
+
+bot_admins = [109792060256616448]
+
+def is_admin (user)
+    user = user.user || user
+    return bot_admins.include? user
+end
+
+
+
+
 bot.command(:eval, help_available: false) do |event, *args|
-    break unless event.user.id == 109792060256616448
+    break unless is_admin(event.user)
 
     eval args.join(' ')
 end
 
 bot.command(:status, help_available: false) do |event, *args|
-    break unless event.user.id == 109792060256616448
+    break unless is_admin(event.user)
 
     bot.update_status('online', args.join(' '), nil)
 end
+
+
 
 
 bot.command(:ping, description: 'Check if I\'m online') do |event|
@@ -32,8 +45,14 @@ bot.command(:coin, description: 'Flip a coin') do |_event|
     return 'Landed on ' + ['heads', 'tails'][rand(2)] + '.'
 end
 
+
+
+
 bot.run true
 
-bot.send_temporary_message(bot.users[109792060256616448].pm, '```I\'m online. beep boop```', 30)
+bot.update_status('online', '', nil)
+for user in bot_admins
+    bot.send_temporary_message(bot.users[user].pm, '```I\'m online. beep boop```', 30)
+end
 
 bot.join
