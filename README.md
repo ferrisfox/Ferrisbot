@@ -29,7 +29,11 @@ where 'B0T.T0KEN.here' is the bot token obtained through the [Discord Developer 
 
 then run:
 
-    [bundler](https://bundler.io/#getting-started) exec ruby bot.rb
+    bundle exec ruby bot.rb
+
+or see [discordrb installation](https://github.com/meew0/discordrb#installation) and run:
+
+    bot.rb
 
 ## Features
 
