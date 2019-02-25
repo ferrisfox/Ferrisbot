@@ -10,7 +10,7 @@ puts "This bot's invite URL is: #{bot.invite_url}"
 bot_admins = [109792060256616448]
 
 def is_admin (user)
-    user = user.user || user
+    user = user.user unless user.is_a?(Member)
     return bot_admins.include? user
 end
 
