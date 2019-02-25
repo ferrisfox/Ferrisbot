@@ -2,6 +2,10 @@
 
 A Discord bot developed with the [discordrb](https://github.com/meew0/discordrb) Gem for Ruby.
 
+## Setup
+
+replace Admin user id(s) in config.conf
+
 ## Execution
 
 ### With Huroku
@@ -10,9 +14,7 @@ Once bot is running on Huroku, the bot token needs to be specified with the conf
 
     BOT_TOKEN
 
-(restart requiered)
-
->TODO: explain hard-codeing developer accounts (ommited untill system is finalised)
+(Restart requiered)
 
 ### Localy withou Heroku CLI
 
