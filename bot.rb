@@ -10,7 +10,7 @@ puts "This bot's invite URL is: #{bot.invite_url}"
 bot_admins = [109792060256616448]
 
 def is_admin (user)
-    user = user.user unless user.is_a?(Member)
+    #user = user.user unless user.respond_to?(:pm)  #tries to fix any cases of bad input. just give propper input insted.
     return bot_admins.include? user
 end
 
