@@ -12,7 +12,7 @@ Once bot is running on Huroku, the bot token needs to be specified with the conf
 
 (restart requiered)
 
->TODO: explain admin codeing (ommited untill admin system is finalised)
+>TODO: explain hard-codeing developer accounts (ommited untill system is finalised)
 
 ### Localy
 
