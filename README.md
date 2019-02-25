@@ -40,15 +40,19 @@ or see [discordrb installation](https://github.com/meew0/discordrb#installation)
 ### Public Commands
 
 List commands:
+
     !help
 
 Check if bot is online: (will recive reaction)
+
     !ping
 
 Roll an dice of any amount of sides:
+
     !roll [n]
 
 Flip a coin:
+
     !flip
 
 ### Other Public Features
@@ -58,9 +62,11 @@ when mentioned, will prompt user to use !help command.
 ### Developer Commands
 
 Execute code:
+
     !eval <code to run>
 
 Change bot status:
+
     !status <'new status'>
 
 ### Other Developer Features
