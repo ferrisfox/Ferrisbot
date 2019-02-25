@@ -1,5 +1,6 @@
 ﻿# frozen_string_literal: true
 require 'discordrb'
+require 'yaml'
 
 bot = Discordrb::Commands::CommandBot.new token: ENV['BOT_TOKEN'], prefix: '!'
 
@@ -7,12 +8,11 @@ puts "This bot's invite URL is: #{bot.invite_url}"
 
 
 
-@bot_admins = [109792060256616448]
-@bot_admins.freeze
+BOT_ADMINS = YAML.load(File.open('Config.conf', 'r').read)['Admins']
 
 def is_admin (user)
     #user = user.user unless user.respond_to?(:pm)  #tries to fix any cases of bad input. just give propper input insted.
-    return @bot_admins.include? user
+    return BOT_ADMINS.include? user
 end
 
 
@@ -58,7 +58,7 @@ end
 bot.run true
 
 bot.update_status('online', 'say !help for commands', nil)
-for user in @bot_admins
+for user in BOT_ADMINS
     bot.send_temporary_message(bot.users[user].pm, 'I\'m online. beep boop.', 10)
 end
 
