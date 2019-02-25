@@ -50,7 +50,7 @@ end
 
 bot.run true
 
-bot.update_status('online', '', nil)
+bot.update_status('online', 'say !help for commands', nil)
 for user in bot_admins
     bot.send_temporary_message(bot.users[user].pm, 'I\'m online. beep boop.', 10)
 end
