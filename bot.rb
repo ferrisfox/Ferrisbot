@@ -86,7 +86,7 @@ end
 
 bot.run true
 
-STARTUP = YAML.load(File.open('Config.conf', 'r').read)['startup']
+STARTUP = YAML.load(File.open('Config.conf', 'r').read)['Startup']
 
 bot.update_status('online', STARTUP['Status'], nil)
 
