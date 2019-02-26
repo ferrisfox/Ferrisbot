@@ -52,7 +52,7 @@ bot.command(:coin, description: 'Flip a coin') do |_event|
     return 'Landed on ' + ['heads', 'tails'][rand(2)] + '.'
 end
 
-not.command(:rps) do |event, player_choice|
+bot.command(:rps) do |event, player_choice|
     bot_int = rand(3)
     event << 'I chose' + ['rock', 'paper', 'scissors'][bot_int] + '!'
 
