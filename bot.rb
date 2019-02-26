@@ -2,7 +2,9 @@
 require 'discordrb'
 require 'yaml'
 
-bot = Discordrb::Commands::CommandBot.new token: ENV['BOT_TOKEN'], prefix: '!'
+bot_token = ENV['BOT_TOKEN'] || File.open('Key.conf', 'r').read.to_s
+
+bot = Discordrb::Commands::CommandBot.new token: bot_token, prefix: '!'
 
 puts "This bot's invite URL is: #{bot.invite_url}"
 
