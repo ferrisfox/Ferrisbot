@@ -45,7 +45,7 @@ end
 
 bot.command(:roll, description: 'Roll a dice') do |_event, sides|
     sides = 6 unless sides.to_i >= 1
-    return 'Rolled a ' + rand(sides.to_i) + '.'
+    return 'Rolled a ' + rand(sides.to_i).to_s + '.'
 end
 
 bot.command(:coin, description: 'Flip a coin') do |_event|
