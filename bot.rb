@@ -71,11 +71,11 @@ bot.command(:rps) do |event, player_choice|
 
     case ((bot_int - player_int) % 3)
     when 1
-        event << '1'
+        event << 'I win!'
     when 2
-        event << '2'
+        event << 'You Win!'
     else 
-        event << '3'
+        event << 'That\'s a draw!'
     end
 end
 
