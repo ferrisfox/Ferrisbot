@@ -86,9 +86,12 @@ end
 
 bot.run true
 
-bot.update_status('online', 'say !help for commands', nil)
-for user in BOT_ADMINS
-    bot.send_temporary_message(bot.users[user].pm, 'I\'m online. beep boop.', 10)
+STARTUP = YAML.load(File.open('Config.conf', 'r').read)['startup']
+
+bot.update_status('online', STARTUP['Status'], nil)
+
+for each in BOT_ADMINS 
+    bot.send_temporary_message(bot.users[each].pm, STARTUP['Message'], STARTUP['Time'])
 end
 
 bot.join
