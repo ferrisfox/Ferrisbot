@@ -54,7 +54,7 @@ end
 
 bot.command(:rps) do |event, player_choice|
     bot_int = rand(3)
-    event << 'I chose' + ['rock', 'paper', 'scissors'][bot_int] + '!'
+    event << 'I chose ' + ['rock', 'paper', 'scissors'][bot_int] + '!'
 
     case player_choice.to_s.downcase
     when 'rock', 'r'
@@ -69,7 +69,7 @@ bot.command(:rps) do |event, player_choice|
         return nil
     end
 
-    case ((bot_int + player_int) % 3)
+    case ((bot_int - player_int) % 3)
     when 1
         event << '1'
     when 2
