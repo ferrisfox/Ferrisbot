@@ -52,6 +52,33 @@ bot.command(:coin, description: 'Flip a coin') do |_event|
     return 'Landed on ' + ['heads', 'tails'][rand(2)] + '.'
 end
 
+not.command(:rps) do |event, player_choice|
+    bot_int = rand(3)
+    event << 'I chose' + ['rock', 'paper', 'scissors'][bot_int] + '!'
+
+    case player_choice.downcase
+    when 'rock', 'r'
+        player_int = 0
+    when 'paper', 'p'
+        player_int = 1
+    when 'scissors', 's'
+        player_int = 2
+    else
+        event << 'But I am unsure what option you chose'
+        event << 'Please chose Rock, Paper or Scissors! (or R, P or S)'
+        return nil
+    end
+
+    case ((bot_int + player_int) % 3)
+    when 1
+        event << '1'
+    when 2
+        event << '2'
+    else 
+        event << '3'
+    end
+end
+
 
 
 
