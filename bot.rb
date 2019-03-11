@@ -9,65 +9,30 @@ bot = Discordrb::Commands::CommandBot.new token: ENV['BOT_TOKEN'], prefix: '!'
 puts "This bot's invite URL is: #{bot.invite_url}"
 
 
+#load commands from external files
 
-BOT_ADMINS = YAML.load(File.open('Config.conf', 'r').read)['Admins']
+Dir["./commands/*.rb"].each {|file| require file }
 
-def is_admin (user)
-    return BOT_ADMINS.include? user
+YAML.load(File.open('commands.conf', 'r').read).keys.each do |cmd|
+    bot.command(cmd.downcase.to_sym) do |event, *args|
+        Object.const_get(cmd).execute(event, args)
+    end
 end
 
 
-
-
-bot.command(:eval, help_available: false) do |event, *args|
-    break unless is_admin(event.user)
-
-    eval args.join(' ')
-end
-
-bot.command(:status, help_available: false) do |event, *args|
-    break unless is_admin(event.user)
-
-    bot.update_status('online', args.join(' '), nil)
-end
-
-
-
+#define basic commands that don't need thier own file
 
 bot.mention() do |event|
     break unless event.content.length <= 21
     event << "Hey #{event.user.mention} You can use !help for a list of what I can do"
 end
 
-
 bot.command(:ping, description: 'Check if I\'m online') do |event|
     event.message.react "👋"
 end
 
-bot.command(:roll, description: 'Roll a dice') do |_event, sides|
-    sides = 6 unless sides.to_i >= 1
-    return "Rolled a #{(rand(sides.to_i) + 1).to_s}."
-end
 
-bot.command(:coin, description: 'Flip a coin') do |_event|
-    return "Landed on #{['heads', 'tails'][rand(2)]}."
-end
-
-bot.command(:rps) do |event, player_choice|
-    bot_int = rand(3)
-    event << "I chose #{['rock', 'paper', 'scissors'][bot_int]}!"
-
-    player_int = {'rock' => 0, 'r' => 0, 'paper' => 1, 'p' => 1, 'scissors' => 2, 's' => 2}[player_choice.to_s.downcase]
-    if player_int == nil
-        event << 'But I am unsure what option you chose'
-        return 'Please chose Rock, Paper or Scissors! (or R, P or S)'
-    end
-
-    ['That\'s a draw!', 'You Win!', 'I win!'][(bot_int - player_int) % 3]
-end
-
-
-
+#start the bot and perform startup activities
 
 bot.run true
 
@@ -75,8 +40,8 @@ STARTUP = YAML.load(File.open('Config.conf', 'r').read)['Startup']
 
 bot.update_status('online', STARTUP['Status'], nil)
 
-for each in BOT_ADMINS 
-    bot.send_temporary_message(bot.users[each].pm, STARTUP['Message'], STARTUP['Time'])
+YAML.load(File.open('Config.conf', 'r').read)['Admins'].each do |id|
+    bot.send_temporary_message(bot.users[id].pm, STARTUP['Message'], STARTUP['Time'])
 end
 
 bot.join
