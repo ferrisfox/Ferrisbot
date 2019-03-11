@@ -1,28 +1,21 @@
 require 'yaml'
 
+# serialized for configerable command settings
 class CommandMeta
-    attr_accessor :enabled, :help_available, :discription
+  attr_accessor :enabled, :help_available, :discription
 
-    def initialize ()
-        @enabled = false
-        @help_available = false
-        @discription = ''
-    end
+  def initialize
+    @enabled = false
+    @help_available = false
+    @discription = ''
+  end
 end
 
+# superclass for all commands
 class Command
-    def self.execute (event, args)
-        abort unless (YAML.load(File.open('commands.conf', 'r').read)[self.name] || CommandMeta.new).enabled
-    end
-
-#        abort unless self.enabled?()
-#    end
-#
-#    def self.enabled? ()
-#        meta().enabled
-#    end
-#
-#    def meta ()
-#        return YAML.load(File.open('commands.conf', 'r').read)[self.class.name] || CommandMeta.new
-#    end
+  def self.execute(_event, _args)
+    meta = (YAML.load(File.open('commands.conf', 'r').read)[name] || CommandMeta.new)
+    raise Exception.new('Command Dissabled'), 'Command is dissabled' unless
+      meta.enabled
+  end
 end
