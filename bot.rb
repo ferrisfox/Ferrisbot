@@ -1,10 +1,10 @@
 ﻿# frozen_string_literal: true
 require 'discordrb'
 require 'yaml'
+require 'dotenv'
+Dotenv.load('Key.env')
 
-bot_token = ENV['BOT_TOKEN'] || File.open('Key.conf', 'r').read.to_s
-
-bot = Discordrb::Commands::CommandBot.new token: bot_token, prefix: '!'
+bot = Discordrb::Commands::CommandBot.new token: ENV['BOT_TOKEN'], prefix: '!'
 
 puts "This bot's invite URL is: #{bot.invite_url}"
 
@@ -57,27 +57,13 @@ bot.command(:rps) do |event, player_choice|
     bot_int = rand(3)
     event << "I chose #{['rock', 'paper', 'scissors'][bot_int]}!"
 
-    case player_choice.to_s.downcase
-    when 'rock', 'r'
-        player_int = 0
-    when 'paper', 'p'
-        player_int = 1
-    when 'scissors', 's'
-        player_int = 2
-    else
+    player_int = {'rock' => 0, 'r' => 0, 'paper' => 1, 'p' => 1, 'scissors' => 2, 's' => 2}[player_choice.to_s.downcase]
+    if player_int == nil
         event << 'But I am unsure what option you chose'
-        event << 'Please chose Rock, Paper or Scissors! (or R, P or S)'
-        return nil
+        return 'Please chose Rock, Paper or Scissors! (or R, P or S)'
     end
 
-    case ((bot_int - player_int) % 3)
-    when 1
-        event << 'I win!'
-    when 2
-        event << 'You Win!'
-    else 
-        event << 'That\'s a draw!'
-    end
+    ['That\'s a draw!', 'You Win!', 'I win!'][(bot_int - player_int) % 3]
 end
 
 
