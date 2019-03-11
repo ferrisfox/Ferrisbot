@@ -5,7 +5,7 @@ require 'yaml'
 require 'dotenv'
 Dotenv.load('Key.env')
 
-bot = Discordrb::Commands::CommandBot.new token: ENV['BOT_TOKEN'], prefix: '!'
+bot = Discordrb::Commands::CommandBot.new token: ENV['BOT_TOKEN'], prefix: '!', help_command: false
 
 puts "This bot's invite URL is: #{bot.invite_url}"
 
