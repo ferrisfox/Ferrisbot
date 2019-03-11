@@ -16,18 +16,15 @@ Once bot is running on Huroku, the bot token needs to be specified with the conf
 
 (Restart requiered)
 
-### Localy withou Heroku CLI
+### Localy without Heroku CLI
 
-replace code on line 4:
+create a file named Key.env and place it in the root directory of the project.
+set the contents to be as follows:
 
-    bot = Discordrb::Commands::CommandBot.new token: ENV['BOT_TOKEN'], prefix: '!'
+    BOT_TOKEN = 'B0T.T0KEN.here'
 
-with:
-
-    bot = Discordrb::Commands::CommandBot.new token: 'B0T.T0KEN.here', prefix: '!'
-
-where 'B0T.T0KEN.here' is the bot token obtained through the [Discord Developer Portal](https://discordapp.com/developers)
-**Pushing code that contains the bot token to a public repository is ill advised as it allows other developers to missuse your bot and your name**
+where 'B0T.T0KEN.here' is the bot token obtained through the [Discord Developer Portal](https://discordapp.com/developers).
+do not uplaod this file to any public repository to prevent missuse of your bot token.
 
 then run:
 
@@ -57,6 +54,10 @@ Flip a coin:
 
     !flip
 
+Play Rock Paper scissors:
+
+    !rps <choice>
+
 ### Other Public Features
 
 when mentioned, will prompt user to use !help command.
@@ -73,6 +74,9 @@ Change bot status:
 
 ### Other Developer Features
 
-sends a pm to all bot admins when code starts
+sends a pm to all bot admins when code starts.
 
-console log displays invite link
+console log displays invite link.
+
+config file allows for the adminto enable and diable the bot without restart.
+also allows for modification to help text for commands.
