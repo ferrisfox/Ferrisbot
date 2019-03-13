@@ -2,6 +2,8 @@ require './command.rb'
 
 # plays rock, paper, scissors
 class RPS < Command
+  @@all += [self]
+
   def self.execute(event, args)
     bot_int = rand(3)
     event << "I chose #{%w[rock paper scissors][bot_int]}!"

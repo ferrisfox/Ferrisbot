@@ -2,6 +2,8 @@ require './command.rb'
 
 # executes arguments as ruby code
 class Eval < Command
+  @@all += [self]
+
   def self.execute(event, args)
     super(event, args)
     admins = YAML.safe_load(File.open('Config.conf', 'r').read)['Admins']
@@ -14,6 +16,8 @@ end
 
 # changes bot playing message
 class Status < Command
+  @@all += [self]
+
   def self.execute(event, args)
     super(event, args)
     admins = YAML.safe_load(File.open('Config.conf', 'r').read)['Admins']

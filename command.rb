@@ -13,9 +13,13 @@ end
 
 # superclass for all commands
 class Command
+  @@all = []
+  def self.all
+    @@all
+  end
+
   def self.execute(_event, _args)
     meta = (YAML.load(File.open('commands.conf', 'r').read)[name] || CommandMeta.new)
-    raise Exception.new('Command Dissabled'), 'Command is dissabled' unless
-      meta.enabled
+    raise Exception.new('Command Dissabled'), 'Command is dissabled' unless meta.enabled
   end
 end

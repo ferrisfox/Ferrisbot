@@ -2,6 +2,8 @@ require './command.rb'
 
 # roll a dice
 class Roll < Command
+  @@all += [self]
+
   def self.execute(event, args)
     super(event, args)
 
@@ -12,6 +14,8 @@ end
 
 # flips a coin
 class Coin < Command
+  @@all += [self]
+
   def self.execute(event, args)
     super(event, args)
     "Landed on #{%w[heads tails][rand(2)]}."
