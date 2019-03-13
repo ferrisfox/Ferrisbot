@@ -33,6 +33,13 @@ bot.command(:ping, description: 'Check if I\'m online') do |event|
   event.message.react '👋'
 end
 
+bot.command(:load) do |event|
+  break unless YAML.safe_load(File.open('Config.conf', 'r').read)['Admins'].include? event.user
+
+  Dir['./commands/*.rb'].each { |file| load file }
+end
+
+
 #
 # start the bot and perform startup activities
 

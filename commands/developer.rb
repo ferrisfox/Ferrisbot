@@ -1,4 +1,4 @@
-require './commands/root_class.rb'
+require './command.rb'
 
 # executes arguments as ruby code
 class Eval < Command

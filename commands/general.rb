@@ -1,4 +1,4 @@
-require './commands/root_class.rb'
+require './command.rb'
 
 # check if bot is online
 class Ping < Command

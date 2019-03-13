@@ -1,4 +1,4 @@
-require './commands/root_class.rb'
+require './command.rb'
 
 # plays rock, paper, scissors
 class RPS < Command

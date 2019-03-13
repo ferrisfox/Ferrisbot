@@ -1,4 +1,4 @@
-require './commands/root_class.rb'
+require './command.rb'
 
 # roll a dice
 class Roll < Command
