@@ -17,6 +17,6 @@ class Help < Command
     YAML.load(File.open('commands.conf', 'r').read).each do |key, value|
       event << "`#{key}` #{value.discription}" if value.help_available
     end
-    return nil
+    nil
   end
 end
