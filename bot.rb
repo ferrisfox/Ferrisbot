@@ -4,8 +4,9 @@ require 'discordrb'
 require 'yaml'
 require 'dotenv/load'
 
+# create CommandBot; hide token; display invite_url
 @bot = Discordrb::Commands::CommandBot.new token: ENV['BOT_TOKEN'], prefix: '!', help_command: false
-
+ENV['BOT_TOKEN'] = nil
 puts "This bot's invite URL is: #{@bot.invite_url}"
 
 # load commands from external files
