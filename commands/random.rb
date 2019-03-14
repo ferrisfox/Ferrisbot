@@ -2,6 +2,7 @@ require './command.rb'
 
 # roll a dice
 class Roll < Command
+  @discription = 'Roll a dice'
   @@all += [self]
 
   def self.execute(event, args)
@@ -14,6 +15,7 @@ end
 
 # flips a coin
 class Coin < Command
+  @discription = 'Flip a coin'
   @@all += [self]
 
   def self.execute(event, args)

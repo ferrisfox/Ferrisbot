@@ -2,6 +2,7 @@ require './command.rb'
 
 # executes arguments as ruby code
 class Eval < Command
+  @discription = nil
   @@all += [self]
 
   def self.execute(event, args)
@@ -16,6 +17,7 @@ end
 
 # changes bot playing message
 class Status < Command
+  @discription = nil
   @@all += [self]
 
   def self.execute(event, args)

@@ -13,8 +13,10 @@ end
 
 # superclass for all commands
 class Command
-  # @help_available = false
-  # @discription = ''
+  @discription = nil
+  def self.discription
+    @discription
+  end
 
   @@all = []
   def self.all
