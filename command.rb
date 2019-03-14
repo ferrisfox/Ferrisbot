@@ -13,10 +13,8 @@ end
 
 # superclass for all commands
 class Command
+  attr_reader :discription
   @discription = nil
-  def self.discription
-    @discription
-  end
 
   @@all = []
   def self.all
