@@ -2,8 +2,7 @@
 
 require 'discordrb'
 require 'yaml'
-require 'dotenv'
-Dotenv.load('Key.env')
+require 'dotenv/load'
 
 @bot = Discordrb::Commands::CommandBot.new token: ENV['BOT_TOKEN'], prefix: '!', help_command: false
 
@@ -22,11 +21,13 @@ end
 
 load_commands
 
-# allow andmins to reload command files
-@bot.command(:load) do |event|
-  break unless YAML.safe_load(File.open('Config.conf', 'r').read)['Admins'].include? event.user
+# allow developers to reload command files when enabled
+if ENV['DEV_MODE']
+  @bot.command(:load) do |event|
+    break unless YAML.safe_load(File.open('Config.conf', 'r').read)['Admins'].include? event.user
 
-  load_commands
+    load_commands
+  end
 end
 
 # respond to @mention with help infomation
