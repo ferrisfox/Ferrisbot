@@ -3,7 +3,6 @@ require './command.rb'
 # roll a dice
 class Roll < Command
   @description = 'Roll a dice'
-  @@all += [self]
 
   def self.execute(event, args)
     super(event, args)

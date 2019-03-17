@@ -3,7 +3,6 @@ require './command.rb'
 # executes arguments as ruby code
 class Exec < Command
   @description = nil
-  @@all += [self] if ENV['DEV_MODE'].to_i >= 2
 
   def self.execute(event, args)
     super(event, args)

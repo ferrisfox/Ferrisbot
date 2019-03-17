@@ -3,7 +3,6 @@ require './command.rb'
 # changes bot playing message
 class Status < Command
   @description = nil
-  @@all += []
 
   def self.execute(event, args)
     super(event, args)
