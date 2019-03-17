@@ -23,11 +23,19 @@ end
 load_commands
 
 # allow developers to reload command files when enabled
-if ENV['DEV_MODE']
+if ENV['DEV_MODE'].to_i >= 1
   @bot.command(:load) do |event|
     break unless YAML.safe_load(File.open('Config.conf', 'r').read)['Admins'].include? event.user
 
     load_commands
+  end
+end
+
+if ENV['DEV_MODE'].to_i >= 3
+  @bot.command(:EVAL) do |event, *args|
+    break unless YAML.safe_load(File.open('Config.conf', 'r').read)['Admins'].include? event.user
+
+    eval args.join(' ')
   end
 end
 

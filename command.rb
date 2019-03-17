@@ -1,5 +1,3 @@
-require 'yaml'
-
 # serialized for configerable command settings
 class CommandMeta
   attr_accessor :enabled, :help_available, :discription
