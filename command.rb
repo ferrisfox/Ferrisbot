@@ -1,14 +1,3 @@
-# serialized for configerable command settings
-class CommandMeta
-  attr_accessor :enabled, :help_available, :description
-
-  def initialize
-    @enabled = false
-    @help_available = false
-    @description = ''
-  end
-end
-
 # superclass for all commands
 class Command
   @description = nil
