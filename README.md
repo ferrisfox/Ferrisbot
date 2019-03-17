@@ -18,7 +18,7 @@ Once bot is running on Huroku, the bot token needs to be specified with the conf
 
 ### Localy without Heroku CLI
 
-create a file named Key.env and place it in the root directory of the project.
+create a file named .env and place it in the root directory of the project.
 set the contents to be as follows:
 
     BOT_TOKEN = 'B0T.T0KEN.here'

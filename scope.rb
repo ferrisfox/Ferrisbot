@@ -11,6 +11,8 @@ class Scope
   end
 
   def self.scope_channel(scope, event)
+    return nil if scope.nil?
+
     channel_selector = { 1 => 'pm', 3 => 'group' }[event.channel.type] || event.channel.id
     scope_user(scope[channel_selector], event) || scope_user(scope['default'], event)
   end
