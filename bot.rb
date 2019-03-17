@@ -31,8 +31,9 @@ if ENV['DEV_MODE'].to_i >= 1
   end
 end
 
+# allow developers to execute code in main scope when enabled
 if ENV['DEV_MODE'].to_i >= 3
-  @bot.command(:EVAL) do |event, *args|
+  @bot.command(:EXEC) do |event, *args|
     break unless YAML.safe_load(File.open('Config.conf', 'r').read)['Admins'].include? event.user
 
     eval args.join(' ')
