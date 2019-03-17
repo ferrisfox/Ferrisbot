@@ -2,7 +2,7 @@ require './command.rb'
 
 # plays rock, paper, scissors
 class RPS < Command
-  @discription = 'Play Rock Paper Scissors'
+  @description = 'Play Rock Paper Scissors'
   @@all += [self]
 
   def self.execute(event, args)

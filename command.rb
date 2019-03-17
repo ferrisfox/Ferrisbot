@@ -1,19 +1,19 @@
 # serialized for configerable command settings
 class CommandMeta
-  attr_accessor :enabled, :help_available, :discription
+  attr_accessor :enabled, :help_available, :description
 
   def initialize
     @enabled = false
     @help_available = false
-    @discription = ''
+    @description = ''
   end
 end
 
 # superclass for all commands
 class Command
-  @discription = nil
-  def self.discription
-    @discription
+  @description = nil
+  def self.description
+    @description
   end
 
   @@all = []

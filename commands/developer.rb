@@ -2,7 +2,7 @@ require './command.rb'
 
 # executes arguments as ruby code
 class Eval < Command
-  @discription = nil
+  @description = nil
   if ENV['DEV_MODE'] >= 2
     @@all += [self]
   end
@@ -20,7 +20,7 @@ end
 
 # changes bot playing message
 class Status < Command
-  @discription = nil
+  @description = nil
   @@all += []
 
   def self.execute(event, args)

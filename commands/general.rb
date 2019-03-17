@@ -2,7 +2,7 @@ require './command.rb'
 
 # check if bot is online
 class Ping < Command
-  @discription = 'Check if I\'m online'
+  @description = 'Check if I\'m online'
   @@all += [self]
 
   def self.execute(event, _args)
@@ -10,14 +10,14 @@ class Ping < Command
   end
 end
 
-# get discription of commands
+# get description of commands
 class Help < Command
-  @discription = 'Display this list'
+  @description = 'Display this list'
   @@all += [self]
 
   def self.execute(event, _args)
     @@all.each do |cmd|
-      event << "`#{cmd.name.downcase}` #{cmd.discription}" if cmd.discription
+      event << "`#{cmd.name.downcase}` #{cmd.description}" if cmd.description
     end
     nil
   end
