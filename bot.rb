@@ -13,16 +13,6 @@ puts "This bot's invite URL is: #{bot.invite_url}"
 Loader.bot = bot
 Loader.commands
 
-# allow developers to reload command files when enabled
-if ENV['DEV_MODE'].to_i >= 1
-  bot.command(:load) do |event|
-    break unless YAML.safe_load(File.open('Config.conf', 'r').read)['Admins'].include? event.user
-
-    Loader.commands
-    nil
-  end
-end
-
 # allow developers to execute code in main scope when enabled
 if ENV['DEV_MODE'].to_i >= 3
   bot.command(:EXEC) do |event, *args|
